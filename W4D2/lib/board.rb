@@ -2,6 +2,8 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
+    @name1 = name1
+    @name2 = name2
     @cups = Array.new(14) { [] }
     @cups.each_index do |i|
       @cups[i] += [:stone, :stone, :stone, :stone] if i != 6 && i != 13
@@ -57,6 +59,11 @@ class Board
   end
 
   def winner
-    
+    return :draw if @cups[6].length == 6 && @cups[13].length == 6
+    if @cups[6].length >  @cups[12].length
+      return @name1 
+    else
+      return @name2
+    end
   end
 end
