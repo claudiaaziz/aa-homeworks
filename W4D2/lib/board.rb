@@ -20,6 +20,8 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    current_player = current_player_name == @name1 ? @name1 : @name2
+
     distribute = @cups[start_pos]
     @cups[start_pos] = []
 
@@ -27,7 +29,7 @@ class Board
       (start_pos...@cups.length).each do |next_cup_i|
         if @cups[next_cup_i].empty?
           return :switch
-        elsif @cups[next_cup_i] == current_player_name.side
+        elsif @cups[next_cup_i] == current_player
           return :prompt
         else
           return next_cup_i
