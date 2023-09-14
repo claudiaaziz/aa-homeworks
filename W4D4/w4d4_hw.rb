@@ -17,27 +17,31 @@ end
 # p sluggish_octopus(['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh'])
 # "fiiiissshhhhhh"
 
-# # Dominant Octopus
+# Dominant Octopus O(n log n)
 
-# def dominant_octopus(fishes)
-#     return fishes if fishes.length < 2
-#     mid_idx = fishes.length / 2
-#     left = fishes[0...mid_idx]
-#     right = fishes[mid_idx..-1]
-#     merge(dominant_octopus(left), dominant_octopus(right))
-# end
+def merge_sort(fishes)
+    return fishes if fishes.length < 2
+    mid_idx = fishes.length / 2
+    left = fishes[0...mid_idx]
+    right = fishes[mid_idx..-1]
+    merge(merge_sort(left), merge_sort(right))
+end
 
-# def merge(left, right)
-#     merged = []
-#     until left.empty? or right.empty?
-#         if left[0].length < right[0].length
-#             merged << left.shift
-#         else
-#             merged << right.shift
-#         end
-#     end
-#     merged + left + right
-# end
+def merge(left, right)
+    merged = []
+    until left.empty? or right.empty?
+        if left[0].length < right[0].length
+            merged << left.shift
+        else
+            merged << right.shift
+        end
+    end
+    merged + left + right
+end
+
+def dominant_octopus(sorted_fishes)
+    sorted_fishes.last
+end
 
 # p dominant_octopus(['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh'])
 
@@ -64,9 +68,15 @@ end
 # p slow_dance("up", tiles_array)
 # p slow_dance("right-down", tiles_array)
 
+# def hash(arr)
+#     count = {}
+#     arr.each_index { |i| count[arr[i]] = i }
+#     count
+# end
+
 def fast_dance(dir, tiles_array)
-    tiles_array
+    # hash(tiles_array)[dir]
 end
 
-p fast_dance("right-down", tiles_array)
 p fast_dance("up", tiles_array)
+p fast_dance("right-down", tiles_array)
