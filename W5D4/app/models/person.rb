@@ -1,5 +1,7 @@
-class Person
-  def initialize(name, house_id)
+class Person < ApplicationRecord
+  validates :name, :house_id, presence: true
+  
+  class_name: :Person
 
-  end
 end
+
