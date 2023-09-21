@@ -1,0 +1,2 @@
+  [1m[35m (57.3ms)[0m  [1m[35mCREATE DATABASE "w5d4_hw_development" ENCODING = 'unicode'[0m
+  [1m[35m (46.4ms)[0m  [1m[35mCREATE DATABASE "w5d4_hw_test" ENCODING = 'unicode'[0m
